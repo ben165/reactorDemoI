@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kleiner Test</title>
+</head>
+<body>
+
+<ul id="list">
+    <li>Test1</li>
+</ul>
+
+<script>
+    // https://www.youtube.com/watch?v=M3jNn3HMeWg
+    // https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events
+    const evtSource = new EventSource("customers/stream");
+    evtSource.onmessage = (event) => {
+    const newElement = document.createElement("li");
+    const eventList = document.getElementById("list");
+
+    newElement.textContent = `message: ${event.data}`;
+    eventList.appendChild(newElement);
+};
+</script>
+
+
+</body>
+</html>
